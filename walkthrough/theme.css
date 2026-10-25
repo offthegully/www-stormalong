@@ -1,0 +1,293 @@
+/* ─────────────────────────────────────────────────────────────────────
+   THE LOOK OF THE WALKTHROUGH PDF, EMAIL AND VIDEO.
+
+   The tokens in :root are shared by all three: change a colour or font
+   here and the PDF, the email and the video captions all follow.
+   (The email copies these values inline, because Gmail strips <style>.)
+
+   Everything below :root styles the PDF only. Rebuild with
+     npm run walkthrough:docs
+   ───────────────────────────────────────────────────────────────────── */
+
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Libre+Franklin:wght@400;600;700&display=swap");
+
+:root {
+  /* Brand colours, the same as the site (tailwind.config.ts) */
+  --ink: #0a1a2b;        /* navy: headings, dark bands */
+  --paper: #f0e6d2;      /* cream: page background */
+  --paper-light: #fbf6ea;/* cards */
+  --gold: #c9a227;       /* stars, rules, accents on navy */
+  --gold-dark: #9a6b24;  /* accents on cream */
+  --brick: #a8321f;      /* links and call-outs */
+  --muted: #5b6573;      /* small print */
+
+  /* Type. Headings use the site's slab face; body text its sans. */
+  --font-heading: "Alfa Slab One", Georgia, serif;
+  --font-body: "Libre Franklin", Helvetica, Arial, sans-serif;
+
+  /* Sizes */
+  --title-size: 38pt;
+  --page-title-size: 24pt;
+  --body-size: 10.5pt;
+}
+
+/* ── PDF page setup ─────────────────────────────────────────────────── */
+
+@page {
+  size: letter landscape;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: 1.45;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.sheet {
+  width: 11in;
+  height: 8.5in;
+  padding: 0.45in 0.5in 0.4in;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+  break-after: page;
+  overflow: hidden;
+  position: relative;
+}
+
+.sheet:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+/* ── Cover ──────────────────────────────────────────────────────────── */
+
+.cover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.eyebrow {
+  font-weight: 700;
+  font-size: 8.5pt;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.cover h1 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--title-size);
+  line-height: 1.05;
+  margin: 0.12in 0 0.08in;
+}
+
+.cover .intro {
+  max-width: 7.2in;
+  color: rgba(240, 230, 210, 0.8);
+  margin: 0 0 0.22in;
+}
+
+.glance-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid rgba(201, 162, 39, 0.5);
+  padding-top: 0.08in;
+  margin-bottom: 0.1in;
+}
+
+.glance-head h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 13pt;
+  margin: 0;
+}
+
+.glance-head span {
+  font-size: 8.5pt;
+  color: rgba(240, 230, 210, 0.65);
+}
+
+.glance {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.14in 0.16in;
+}
+
+.glance figure {
+  margin: 0;
+}
+
+.glance img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid rgba(240, 230, 210, 0.2);
+}
+
+.glance figcaption {
+  font-size: 8.5pt;
+  font-weight: 600;
+  margin-top: 0.04in;
+}
+
+.glance figcaption code {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.highlights {
+  columns: 2;
+  column-gap: 0.4in;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 9pt;
+  color: rgba(240, 230, 210, 0.85);
+}
+
+.highlights li {
+  break-inside: avoid;
+  margin-bottom: 0.07in;
+}
+
+.highlights strong {
+  color: var(--paper);
+}
+
+/* ── Page sheets ────────────────────────────────────────────────────── */
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.06in;
+  margin-bottom: 0.16in;
+}
+
+.page-head h2 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: var(--page-title-size);
+  margin: 0;
+}
+
+.page-head code {
+  font-family: var(--font-body);
+  font-size: 10pt;
+  color: var(--gold-dark);
+}
+
+/* Screenshot sizes. Desktop is 16:10 and the phone is roughly 9:19.5,
+   the shape of the screens they were taken on, so nothing is cropped. */
+.shots {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.3in;
+  --shot-height: 4.85in;
+}
+
+.shot {
+  margin: 0;
+}
+
+.shot.desktop {
+  width: 7.5in;
+}
+
+.shot.mobile {
+  width: 2.2in;
+}
+
+.shot-label {
+  font-weight: 700;
+  font-size: 7.5pt;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.05in;
+}
+
+.shot .frame {
+  height: var(--shot-height);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(10, 26, 43, 0.18);
+}
+
+.shot.desktop .frame {
+  border-radius: 6px;
+  border-top: 14px solid #d9d3c4; /* browser bar */
+}
+
+.shot.mobile .frame {
+  border-radius: 18px;
+  border: 6px solid var(--ink); /* phone bezel */
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.points {
+  margin: 0.18in 0 0;
+  padding-left: 0.18in;
+  columns: 2;
+  column-gap: 0.4in;
+}
+
+.points li {
+  break-inside: avoid;
+  margin-bottom: 0.05in;
+}
+
+.points li::marker {
+  color: var(--gold-dark);
+}
+
+.note {
+  margin-top: 0.08in;
+  padding: 0.06in 0.12in;
+  border-left: 3px solid var(--brick);
+  background: var(--paper-light);
+  font-size: 9pt;
+}
+
+.sheet-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7.5pt;
+  color: var(--muted);
+  margin-top: auto;
+  padding-top: 0.12in;
+}
+
+.cover .sheet-foot {
+  color: rgba(240, 230, 210, 0.5);
+}
+
+a {
+  color: var(--brick);
+}

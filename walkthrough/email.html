@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- Generated from content.md and theme.css by "npm run walkthrough:docs". Edit those, not this file. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Email: A first look at the new stormalong.com</title>
+  <style>
+    body { margin: 0; background: #e9e5dc; font-family: 'Libre Franklin', Helvetica, Arial, sans-serif; }
+    .bar { position: sticky; top: 0; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+           padding: 12px 16px; background: #fff; border-bottom: 1px solid #ddd; font-size: 14px; }
+    .bar button { padding: 8px 14px; font: inherit; font-weight: 700; color: #fff; background: #0a1a2b;
+                  border: 0; border-radius: 3px; cursor: pointer; }
+    .bar .subject { flex: 1 1 280px; }
+    .bar .done { color: #a8321f; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <span class="subject"><strong>Subject:</strong> <span id="subject">A first look at the new stormalong.com</span></span>
+    <button type="button" data-copy="subject">Copy subject</button>
+    <button type="button" data-copy="message">Copy email for Gmail</button>
+    <span class="done" id="done" aria-live="polite"></span>
+  </div>
+  <div id="message">
+<div style="display:none;max-height:0;overflow:hidden;">A short video and a page-by-page PDF of the redesigned site, desktop and mobile.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0e6d2;">
+  <tr><td align="center" style="padding:24px 12px;">
+    <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background:#fbf6ea;">
+      <tr><td style="background:#0a1a2b;padding:28px 32px 26px;">
+        <div style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#c9a227;">★ Stormalong Cider · Website walkthrough ★</div>
+        <div style="font-family:'Alfa Slab One', Georgia, serif;font-size:30px;line-height:1.15;color:#f0e6d2;margin-top:10px;">The new stormalong.com</div>
+      </td></tr>
+      <tr><td style="padding:28px 32px 8px;">
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;">Hi all,</p>
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;">The redesigned stormalong.com is ready for a look. I've put together the attached video (about two minutes, no sound needed) and the attached PDF with every page on desktop and mobile.</p>
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;"><strong style="color:#0a1a2b;">What's new since the last walkthrough</strong></p>
+<ul style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;padding-left:22px;"><li style="margin:0 0 6px;">The home page now leads with our own photography: the core cans in a row introduce the line-up, and a &quot;Respect the apple&quot; photo spread sits under the medals.</li><li style="margin:0 0 6px;">Each core cider in &quot;Where to start&quot; is now a clear button straight to its page.</li></ul>
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;"><strong style="color:#0a1a2b;">What's on the site</strong></p>
+<ul style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;padding-left:22px;"><li style="margin:0 0 6px;">Every cider has its own page with its story, stats, medals and apple varieties.</li><li style="margin:0 0 6px;">A &quot;How dry is it?&quot; chart ranks all 15 ciders from driest to sweetest.</li><li style="margin:0 0 6px;">Every page points visitors to the store finder, and the Rare Apple Club has its own page.</li><li style="margin:0 0 6px;">Built for phones first, and fast to load.</li></ul>
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;"><strong style="color:#0a1a2b;">Still to do:</strong> the distributor's store-finder map needs to be plugged in before launch.</p>
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;">I'd love any feedback on copy, photos or layout by the end of next week.</p>
+<p style="font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:15px;line-height:1.55;color:#0a1a2b;margin:0 0 16px;">Thanks,<br>[Your name]</p>
+      </td></tr>
+      
+      <tr><td style="border-top:1px solid #f0e6d2;padding:14px 32px 18px;font-family:'Libre Franklin', Helvetica, Arial, sans-serif;font-size:12px;color:#5b6573;">Stormalong Cider · website walkthrough · October 2026</td></tr>
+    </table>
+  </td></tr>
+</table>
+  </div>
+  <script>
+    // Selecting the message and copying keeps its formatting, so it
+    // pastes into a Gmail compose window looking the same as here.
+    document.querySelectorAll("[data-copy]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var range = document.createRange();
+        range.selectNodeContents(document.getElementById(button.dataset.copy));
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) {}
+        selection.removeAllRanges();
+        document.getElementById("done").textContent = ok
+          ? "Copied. Paste into Gmail."
+          : "Couldn't copy here. Select the email and press Ctrl/Cmd+C.";
+      });
+    });
+  </script>
+</body>
+</html>
