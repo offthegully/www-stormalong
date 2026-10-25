@@ -1,14 +1,16 @@
 import { FindACan } from "@/components/press-house/find-a-can";
 import { FrontPage } from "@/components/press-house/home/front-page";
-import { Fleet } from "@/components/press-house/home/fleet";
+import { LineupShelf } from "@/components/press-house/home/lineup-shelf";
+import { PhotoMosaic } from "@/components/press-house/home/photo-mosaic";
 import { TrophyCase } from "@/components/press-house/home/trophy-case";
 import { RareAppleBand } from "@/components/press-house/rare-apple-band";
+import { lineupPhoto, spreadPhotos } from "@/lib/home-photos";
 
 /**
  * Direction D, "Press House". The order is the argument: what is new,
- * what the brand has won, what it makes, and then
- * the only question a distribution-led business actually needs to
- * answer — where can I buy it.
+ * what it makes, what the brand has won, what it looks like out in
+ * the world, and then the only question a distribution-led business
+ * actually needs to answer — where can I buy it.
  */
 export default function Home() {
   return (
@@ -26,8 +28,9 @@ export default function Home() {
         Stormalong Cider — unfiltered craft hard cider from Massachusetts
       </h1>
       <FrontPage />
+      <LineupShelf photo={lineupPhoto} />
       <TrophyCase />
-      <Fleet />
+      <PhotoMosaic photos={spreadPhotos} />
       <FindACan />
       <RareAppleBand />
     </>
