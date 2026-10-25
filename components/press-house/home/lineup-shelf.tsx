@@ -21,6 +21,9 @@ const LINEUP_SLUGS = [
  * beneath names them in the same order and each name goes to its page
  * — the photograph is the shelf and the names are its labels. ABV and
  * sweetness, which the tiles carried, are one click away on /ciders.
+ * The names are buttons, the same shape as "All ciders" beside them
+ * but with a hairline border, so they read as clickable without
+ * outranking it.
  *
  * The photo runs edge to edge at its own shape until it would pass
  * 640px tall. The words sit on an ink bar beneath it rather than over
@@ -54,14 +57,18 @@ export function LineupShelf({ photo }: { photo: HomePhoto }) {
             <h2 className="ph-slab mb-3 text-[1.9rem] leading-none sm:text-[2.3rem]">
               Where to start
             </h2>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            <ul className="flex flex-wrap gap-2.5">
               {ciders.map((cider) => (
                 <li key={cider.slug}>
                   <Link
                     href={`/ciders/${cider.slug}`}
-                    className="ph-press font-franklin text-[0.95rem] text-paper/80 underline-offset-4 hover:text-gold hover:underline"
+                    className="ph-press group ph-label inline-flex items-center gap-2 border border-gold/70 px-3.5 py-2.5 text-paper hover:border-gold hover:bg-gold hover:text-ink"
                   >
                     {cider.name}
+                    <ArrowRightIcon
+                      size={11}
+                      className="ph-move-fast text-gold group-hover:translate-x-1 group-hover:text-ink"
+                    />
                   </Link>
                 </li>
               ))}
